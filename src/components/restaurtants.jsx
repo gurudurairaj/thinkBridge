@@ -58,21 +58,27 @@ const RestaurtantsView =()=>{
             dispatch(home.editRestaurants(addRest))
         }
         else{
-            addRest.sno=restaurtantsData?.length+1
+          
             dispatch(home.addRestaurants(addRest))
         }
-        setOpen(false)       
+        setOpen(false)  
+        clearField()     
     };
 
     const handleCancel= (e) => {
-        setAddRest({
-            name:"",
-            subName:"", 
-            location:"",
-            phone:"",
-            description:"",
-        })
+        clearField()
         setOpen(false)
+    }
+
+    const clearField=()=>{
+      setAddRest({
+        name:"",
+        subName:"", 
+        location:"",
+        phone:"",
+        description:"",
+    })
+
     }
 
     const handleEdit= (data) => {
@@ -146,8 +152,8 @@ const RestaurtantsView =()=>{
              </Box>
             </Box>
           
-              <Box style={{display:'flex' ,justifyContent:'space-between',width:'100%'}}>
-                <Box style={{display:'flex',flexDirection:'row' , }}>
+              <Box style={{display:'flex' ,flexWrap:'wrap',justifyContent:'space-between',width:'100%'}}>
+              
                {  
                 restaurtantsData?.filter((filData)=>{ 
                    if(searchValue ){
@@ -159,7 +165,7 @@ const RestaurtantsView =()=>{
                  
                 }).map((data)=>{
                    return(
-                       <Card  class="displayCard" sx={{maxWidth: 150, flex:'1 1 21%' ,margin:'5px'}} >
+                       <Card  class="displayCard" sx={{maxWidth: 345, flex:'1 1 24%' ,margin:'5px'}} >
                            <CardHeader
                                title={data?.name}
                                subheader={data?.subName}
@@ -200,7 +206,7 @@ const RestaurtantsView =()=>{
                     )
                  })
                 }   
-                </Box>      
+                    
             </Box>
             </Box>
 

@@ -22,6 +22,7 @@ export const tbSlice = createSlice({
     initialState:initialRestData,
     reducers:{
       addRestaurants(state,action){
+         action.payload.sno=state.restData.length+1
           state.restData.push(action.payload)
       },
       editRestaurants(state,action){  
